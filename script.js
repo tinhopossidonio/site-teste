@@ -348,3 +348,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // O botão "Adicionar ao Carrinho" dentro do modal agora é tratado dentro de abrirModalComPreco
   // para alternar entre adicionarComSabores e adicionarProdutoDireto.
 });
+// Evento para adicionar o produto ao carrinho
+document.getElementById('adicionar-ao-carrinho').addEventListener('click', function () {
+  const checkboxes = document.querySelectorAll('#modalSabores input[type="checkbox"]:checked');
+  const saboresSelecionados = Array.from(checkboxes).map(cb => cb.value);
+
+  if (saboresSelecionados.length === 0) {
+    showAlert("Por favor, selecione pelo menos um sabor.");
+    return;
+  }
+
+  produtoAtual.quantidade = saboresSelecionados.length;
+  produtoAtual.sabores = saboresSelecionados;
+
+  // Recuperar carrinho existente ou iniciar novo
+  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  carrinho.push(produtoAtual);
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+  showAlert("Produto adicionado ao carrinho!");
+
+  // Fechar o modal
+  document.getElementById("modalSabores").classList.remove("active");
+});

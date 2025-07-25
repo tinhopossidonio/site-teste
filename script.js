@@ -1,5 +1,5 @@
-// script.js (Versão 13.0 - Final e Corrigida)
-console.log('Script.js loaded - Version 13.0');
+// script.js (Versão 14.0 - Pop-up e Botão Corrigidos)
+console.log('Script.js loaded - Version 14.0');
 
 // Objeto que mapeia nomes de produtos para os sabores disponíveis.
 const saboresDisponiveis = {
@@ -133,6 +133,7 @@ function fecharModal() {
  * Valida se a soma das quantidades dos sabores corresponde à quantidade total do produto.
  */
 function adicionarComSabores() {
+  console.log('adicionarComSabores chamada.'); // Log para verificar se a função é chamada
   const inputs = document.querySelectorAll("#sabores-form input[type='number']");
   let saboresSelecionados = {};
   let totalSaboresSelecionados = 0;

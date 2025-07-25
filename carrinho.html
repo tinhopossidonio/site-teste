@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Seu Pedido</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Estilos para a mensagem de alerta personalizada */
+    .custom-alert {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #333;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .custom-alert.show {
+        opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-gray-900 text-white p-4 text-center rounded-b-lg shadow-md">
+    <h1 class="text-3xl font-bold mb-2">Finalizar Pedido</h1>
+    <a href="index.html" class="text-green-400 hover:text-green-300 transition duration-300 flex items-center justify-center">
+      ← Continuar comprando
+    </a>
+  </header>
+
+  <main class="checkout-container p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-lg mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+    
+    <!-- Seção de Resumo do Pedido -->
+    <section class="order-summary-section p-4 border border-gray-200 rounded-lg shadow-sm">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">Seu Pedido</h2>
+      <div id="itens">
+        <!-- Itens do carrinho serão carregados aqui pelo JavaScript -->
+      </div>
+      <div id="total" class="text-right font-bold text-xl text-gray-900"></div>
+    </section>
+
+    <!-- Seção de Detalhes de Entrega e Pagamento -->
+    <section class="delivery-details-section p-4 border border-gray-200 rounded-lg shadow-sm">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">Detalhes de Entrega</h2>
+      <div class="mb-4">
+        <label for="nome" class="block text-gray-700 text-sm font-bold mb-2">Seu nome:</label>
+        <input type="text" id="nome" placeholder="Nome Completo" class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+      </div>
+      <div class="mb-4">
+        <label for="telefone" class="block text-gray-700 text-sm font-bold mb-2">Telefone (WhatsApp):</label>
+        <input type="tel" id="telefone" placeholder="Ex: 5511999999999" class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+      </div>
+      <div class="mb-6">
+        <label for="endereco" class="block text-gray-700 text-sm font-bold mb-2">Endereço completo de entrega:</label>
+        <textarea id="endereco" placeholder="Rua, Número, Bairro, Cidade, Estado, CEP" rows="4" class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+      </div>
+      
+      <button id="finalizar-pedido-btn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1">Enviar Pedido via WhatsApp</button>
+    </section>
+  </main>
+
+  <!-- Mensagem de alerta personalizada -->
+  <div id="custom-alert" class="custom-alert">
+      <p id="alert-message"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
